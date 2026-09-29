@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asha B — Cyber Security Student Portfolio</title>
+<meta name="description" content="Portfolio of Asha B, Cyber Security student and ethical hacking enthusiast from Trivandrum, Kerala.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050816;--bg2:#0B1224;--acc:#6FFF00;--acc2:#00D9FF;--tx:#F5F7FF;--mut:#9CA3AF;--glass:rgba(255,255,255,.05);--bd:rgba(255,255,255,.1);
+--sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.65;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(0,217,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,217,255,.04) 1px,transparent 1px);background-size:44px 44px}
+a{color:var(--acc2)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}
+section:nth-of-type(even){background:var(--bg2)}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);margin:0 0 8px}
+h2::before{content:"// ";font-family:var(--mono);color:var(--acc);font-weight:400}
+.sub{color:var(--mut);margin:0 0 36px;max-width:640px}
+.card{background:var(--glass);border:1px solid var(--bd);border-radius:16px;padding:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(111,255,0,.5);box-shadow:0 0 28px rgba(0,217,255,.15)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tag{display:inline-block;font-family:var(--mono);font-size:.75rem;padding:3px 10px;border:1px solid var(--bd);border-radius:99px;margin:3px 3px 0 0;color:var(--acc2)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(5,8,22,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;letter-spacing:.15em;color:var(--tx);text-decoration:none}
+.logo span{color:var(--acc)}
+.links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.links a{color:var(--mut);text-decoration:none;font-size:.92rem;transition:color .2s}
+.links a:hover,.links a:focus-visible{color:var(--acc)}
+.burger{display:none;background:none;border:1px solid var(--bd);border-radius:8px;width:42px;height:42px;cursor:pointer;color:var(--tx);font-size:1.3rem}
+@media(max-width:800px){.burger{display:block}.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--bd);display:none}.links.open{display:flex}.links a{display:block;padding:14px 20px}}
+/* hero */
+#home{min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;padding-top:100px;background:radial-gradient(circle at 75% 30%,rgba(0,217,255,.12),transparent 50%),radial-gradient(circle at 15% 80%,rgba(111,255,0,.08),transparent 45%)}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+#home .wrap{position:relative;z-index:1}
+.term{font-family:var(--mono);color:var(--acc);font-size:.9rem;margin-bottom:10px}
+h1{font-size:clamp(3rem,10vw,6rem);line-height:1;margin:0 0 12px;letter-spacing:.04em;background:linear-gradient(90deg,var(--tx),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--acc);font-weight:600;margin:0 0 16px}
+.intro{max-width:600px;color:var(--mut);font-size:1.05rem}
+.tagline{font-family:var(--mono);color:var(--acc2);margin:18px 0 28px;font-size:.95rem}
+.tagline::after{content:"▌";animation:blink 1s steps(1) infinite;color:var(--acc)}
+@keyframes blink{50%{opacity:0}}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;text-decoration:none;margin:0 12px 12px 0;border:1px solid var(--acc);transition:transform .25s,box-shadow .25s;cursor:pointer;font:inherit;font-weight:600}
+.btn.p{background:var(--acc);color:#050816}
+.btn.s{background:transparent;color:var(--acc)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 22px rgba(111,255,0,.35)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+.icons{position:absolute;right:6%;top:50%;transform:translateY(-50%);font-size:5rem;opacity:.15;display:grid;gap:20px;z-index:0}
+@media(max-width:900px){.icons{display:none}}
+/* timelines */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:28px;font-family:var(--mono);font-size:.82rem}
+.flow span{padding:8px 14px;border:1px solid var(--bd);border-radius:8px;background:var(--glass)}
+.flow i{color:var(--acc);font-style:normal}
+.tl{position:relative;padding-left:30px;border-left:2px solid rgba(0,217,255,.35);margin-left:8px}
+.tl .item{position:relative;margin-bottom:26px}
+.tl .item::before{content:"";position:absolute;left:-39px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc)}
+.tl .item.old::before{background:var(--acc2);box-shadow:0 0 12px var(--acc2)}
+.badge{font-family:var(--mono);font-size:.75rem;color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:2px 10px}
+h3{margin:0 0 6px;font-size:1.2rem}
+.card p{margin:.4em 0;color:var(--mut)}
+ul.f{margin:10px 0 0;padding-left:18px;color:var(--mut)}
+ul.f li{margin:3px 0}
+/* tools */
+.tool{font-family:var(--mono);background:#02040d;border-radius:12px;border:1px solid rgba(111,255,0,.25);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.tool:hover{transform:translateY(-5px);box-shadow:0 0 26px rgba(111,255,0,.18)}
+.tool .bar{background:#0d1428;padding:8px 14px;display:flex;gap:6px;align-items:center;font-size:.72rem;color:var(--mut)}
+.tool .bar b{width:9px;height:9px;border-radius:50%;background:#ff5f57}.tool .bar b:nth-child(2){background:#febc2e}.tool .bar b:nth-child(3){background:#28c840}
+.tool .bd{padding:16px}
+.tool .cmd{color:var(--acc);font-size:.85rem}
+.tool p{color:var(--mut);font-size:.88rem;margin:8px 0 0;font-family:var(--sans)}
+/* projects */
+.proj{border-top:3px solid var(--acc)}
+.proj:nth-child(2){border-top-color:var(--acc2)}
+.proj .note{font-size:.8rem;color:var(--acc2);font-family:var(--mono);margin-top:14px;padding-top:12px;border-top:1px dashed var(--bd)}
+/* journey */
+.jr{display:flex;flex-direction:column;align-items:center;gap:0;max-width:340px;margin:0 auto}
+.jr div{width:100%;text-align:center;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--glass);font-weight:500}
+.jr i{font-style:normal;color:var(--acc);line-height:1.5}
+.motto{text-align:center;margin-top:36px;font-family:var(--mono);color:var(--acc);font-size:1.1rem}
+/* contact */
+form{display:grid;gap:14px}
+label{font-size:.85rem;color:var(--mut)}
+input,textarea{width:100%;margin-top:4px;padding:12px 14px;background:rgba(2,4,13,.7);color:var(--tx);border:1px solid var(--bd);border-radius:10px;font:inherit}
+input:focus,textarea:focus{border-color:var(--acc)}
+.ci{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.ci b{display:block;font-size:.75rem;color:var(--acc);font-family:var(--mono);text-transform:uppercase}
+.ci a{word-break:break-all}
+footer{background:#02040d;border-top:1px solid var(--bd);padding:40px 0;text-align:center}
+footer p{margin:6px 0;color:var(--mut)}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="#home">ASHA <span>B</span></a>
+<button class="burger" id="bg" aria-label="Toggle menu" aria-expanded="false">☰</button>
+<ul class="links" id="lk">
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#skills">Skills</a></li><li><a href="#tools">Tools</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li>
+</ul></div></nav>
+
+<section id="home">
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="icons" aria-hidden="true"><span>🛡️</span><span>🔐</span><span>🌐</span></div>
+<div class="wrap">
+<div class="term">$ whoami</div>
+<h1>ASHA B</h1>
+<p class="role">Cyber Security Student | Ethical Hacking Enthusiast</p>
+<p class="intro">Exploring the world of cyber security through hands-on learning, networking, ethical hacking, and security-focused projects.</p>
+<p class="tagline">Learning Cyber Security. Building. Exploring. Securing.</p>
+<a class="btn p" href="#projects">View My Projects</a><a class="btn s" href="#contact">Contact Me</a>
+</div>
+</section>
+
+<section id="about"><div class="wrap">
+<h2 class="reveal">About Me</h2><p class="sub reveal">Age 19 · Trivandrum, Kerala</p>
+<div class="card reveal">
+<p>I am Asha B, a Cyber Security student currently pursuing my Cyber Security course at Cyberbee Academy, Trivandrum. My journey into cyber security started with an interest in understanding how networks, systems, websites, and digital applications work and how they can be protected from security threats.</p>
+<p>I come from a Commerce background and am currently developing my technical skills in cyber security through hands-on learning and practical projects. I am particularly interested in ethical hacking, penetration testing, network security, vulnerability assessment, threat detection, incident response, and system security.</p>
+<p>I enjoy learning by building practical projects rather than only studying theory. My projects and practice activities focus on making cyber-security concepts easier to understand, exploring security tools, analyzing networks and vulnerabilities, and developing useful learning-oriented security solutions.</p>
+<p>I am continuously improving my Python fundamentals and cybersecurity knowledge while gaining practical exposure to tools such as Nmap, Wireshark, Burp Suite, and Hydra, along with TCP/IP networking concepts.</p>
+<p>My goal is to continue developing strong technical and problem-solving skills and build a career in cyber security, ethical hacking, and defensive security.</p>
+</div>
+<div class="flow reveal"><span>Commerce Background</span><i>→</i><span>Cyber Security Learning</span><i>→</i><span>Hands-on Practice</span><i>→</i><span>Projects</span><i>→</i><span>Future Cyber Security Career</span></div>
+</div></section>
+
+<section id="education"><div class="wrap">
+<h2 class="reveal">Education &amp; Training</h2><p class="sub reveal">From Commerce into cyber security.</p>
+<div class="tl">
+<div class="item reveal card"><span class="badge">Status: Ongoing</span>
+<h3 style="margin-top:10px">Cyber Security Course</h3><p>Cyberbee Academy — Trivandrum</p>
+<p>Areas being explored:</p>
+<div><span class="tag">Ethical Hacking</span><span class="tag">Network Security</span><span class="tag">Penetration Testing</span><span class="tag">Vulnerability Assessment</span><span class="tag">Threat Detection</span><span class="tag">Incident Response</span><span class="tag">System Security</span><span class="tag">TCP/IP Networking</span></div></div>
+<div class="item old reveal card"><h3>Commerce Batch</h3><p>Previous qualification — my academic background before moving into cyber security.</p></div>
+</div></div></section>
+
+<section id="skills"><div class="wrap">
+<h2 class="reveal">Skills &amp; Areas of Interest</h2><p class="sub reveal">Learning areas and practical interests — not claims of advanced expertise.</p>
+<div class="grid g3">
+<div class="card reveal"><h3>💻 Programming</h3><ul class="f"><li>Python Basics</li></ul></div>
+<div class="card reveal"><h3>🛡️ Cyber Security</h3><ul class="f"><li>Ethical Hacking</li><li>Penetration Testing</li><li>Network Security</li><li>Vulnerability Assessment</li><li>Threat Detection</li><li>Incident Response</li><li>System Security</li></ul></div>
+<div class="card reveal"><h3>🌐 Networking</h3><ul class="f"><li>TCP/IP</li><li>Network Fundamentals</li><li>Packet Analysis</li></ul></div>
+</div></div></section>
+
+<section id="tools"><div class="wrap">
+<h2 class="reveal">Cyber Security Tools</h2><p class="sub reveal">Tools I am gaining practical exposure to.</p>
+<div class="grid g3">
+<div class="tool reveal"><div class="bar"><b></b><b></b><b></b>&nbsp;nmap</div><div class="bd"><div class="cmd">$ nmap</div><h3>Nmap</h3><p>Network scanning and reconnaissance.</p></div></div>
+<div class="tool reveal"><div class="bar"><b></b><b></b><b></b>&nbsp;wireshark</div><div class="bd"><div class="cmd">$ wireshark</div><h3>Wireshark</h3><p>Network packet capture and analysis.</p></div></div>
+<div class="tool reveal"><div class="bar"><b></b><b></b><b></b>&nbsp;burpsuite</div><div class="bd"><div class="cmd">$ burpsuite</div><h3>Burp Suite</h3><p>Web application security testing and analysis.</p></div></div>
+<div class="tool reveal"><div class="bar"><b></b><b></b><b></b>&nbsp;hydra</div><div class="bd"><div class="cmd">$ hydra</div><h3>Hydra</h3><p>Credential/security testing in authorized lab environments.</p></div></div>
+<div class="tool reveal"><div class="bar"><b></b><b></b><b></b>&nbsp;tcp-ip</div><div class="bd"><div class="cmd">$ tcpdump -i eth0</div><h3>TCP/IP Networking</h3><p>Understanding network communication, protocols, ports, and packet flow.</p></div></div>
+</div></div></section>
+
+<section id="projects"><div class="wrap">
+<h2 class="reveal">Projects</h2><p class="sub reveal">Learning-focused projects and concepts from my cyber security journey.</p>
+<div class="grid g3">
+<div class="card proj reveal"><h3>Cyber Security Quiz</h3>
+<p>A student-friendly cyber security learning tool designed to make fundamental security concepts easier and more interactive to understand. The project uses quiz-based learning to help beginners explore topics such as networking, ethical hacking, security concepts, vulnerabilities, and cyber-security fundamentals.</p>
+<ul class="f"><li>Interactive quizzes</li><li>Beginner-friendly questions</li><li>Cyber-security topics</li><li>Score tracking</li><li>Learning-focused interface</li><li>Futuristic cyber-security UI</li><li>3D/glassmorphism visual elements</li></ul></div>
+<div class="card proj reveal"><h3>Security Detection Tool</h3>
+<p>A learning-oriented cyber security project focused on understanding how security-related information, vulnerabilities, and suspicious indicators can be identified and analyzed. The project is designed to help explore practical security detection concepts.</p>
+<ul class="f"><li>Security checks</li><li>Vulnerability awareness</li><li>URL/security analysis</li><li>Suspicious activity detection</li><li>Security information analysis</li></ul>
+<div class="note">Learning/project concept — not a production security product.</div></div>
+<div class="card proj reveal"><h3>Cyber Security AI Assistant</h3>
+<p>A learning-oriented AI assistant concept designed to help users interact with cyber-security information through natural-language questions. The concept focuses on making security information easier to understand and exploring how an assistant could help analyze security-related information and indicators.</p>
+<ul class="f"><li>Security-related question answering</li><li>Cyber-security learning assistance</li><li>Security information analysis</li><li>Phishing-awareness assistance</li><li>Beginner-friendly explanations</li></ul>
+<div class="note">Project/learning concept — no real-time monitoring or detection is claimed.</div></div>
+</div></div></section>
+
+<section id="journey"><div class="wrap">
+<h2 class="reveal">My Cyber Security Journey</h2><p class="sub reveal">Step by step, from Commerce to security.</p>
+<div class="jr reveal">
+<div>Commerce</div><i>↓</i><div>Interest in Technology</div><i>↓</i><div>Cyber Security Learning</div><i>↓</i><div>Networking Fundamentals</div><i>↓</i><div>Python Basics</div><i>↓</i><div>Ethical Hacking</div><i>↓</i><div>Security Tools</div><i>↓</i><div>Hands-on Projects</div><i>↓</i><div>Continuous Learning</div>
+</div>
+<p class="motto reveal">Learning. Practicing. Building. Securing.</p>
+</div></section>
+
+<section id="goals"><div class="wrap">
+<h2 class="reveal">Future Goals</h2>
+<div class="card reveal" style="margin-top:28px"><p style="color:var(--tx);font-size:1.08rem">I want to continuously improve my knowledge of cyber security and gain more practical experience in ethical hacking, penetration testing, network security, vulnerability assessment, and defensive security. My goal is to build meaningful security projects, strengthen my technical skills, and grow into a professional cyber-security role.</p></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2 class="reveal">Let's Connect</h2>
+<p class="sub reveal">I'm always interested in learning, building, and connecting with people who are passionate about technology and cyber security.</p>
+<div class="grid g2">
+<div class="card reveal"><ul class="ci">
+<li><b>Email</b><a href="mailto:ashabee257@gmail.com">ashabee257@gmail.com</a></li>
+<li><b>Phone</b><a href="tel:+918136960684">8136960684</a></li>
+<li><b>Location</b>Trivandrum, Kerala</li>
+<li><b>LinkedIn</b><a href="http://www.linkedin.com/in/asha-anto-17b062437" target="_blank" rel="noopener">www.linkedin.com/in/asha-anto-17b062437</a></li>
+</ul></div>
+<div class="card reveal"><form id="cf">
+<div><label for="n">Name</label><input id="n" required autocomplete="name"></div>
+<div><label for="e">Email</label><input id="e" type="email" required autocomplete="email"></div>
+<div><label for="m">Message</label><textarea id="m" rows="5" required></textarea></div>
+<button class="btn p" type="submit" style="margin:0">Send Message</button>
+<small id="st" role="status" style="color:var(--acc)"></small>
+</form></div>
+</div></div></section>
+
+<footer><div class="wrap">
+<div class="logo">ASHA <span>B</span></div>
+<p>Cyber Security Student | Ethical Hacking Enthusiast</p>
+<div class="fl"><a href="http://www.linkedin.com/in/asha-anto-17b062437" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:ashabee257@gmail.com">Email</a><a href="tel:+918136960684">Phone</a></div>
+<p>© 2026 Asha B. All rights reserved.</p>
+</div></footer>
+
+<script>
+(function(){
+var bg=document.getElementById('bg'),lk=document.getElementById('lk');
+bg.onclick=function(){var o=lk.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+lk.addEventListener('click',function(e){if(e.target.tagName==='A'){lk.classList.remove('open');bg.setAttribute('aria-expanded',false)}});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.getElementById('cf').onsubmit=function(e){e.preventDefault();
+var s='Portfolio message from '+n.value,b=m.value+'\n\nFrom: '+n.value+' ('+e_.value+')';
+location.href='mailto:ashabee257@gmail.com?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);
+document.getElementById('st').textContent='Opening your email app to send the message…'};
+var e_=document.getElementById('e'),n=document.getElementById('n'),m=document.getElementById('m');
+var c=document.getElementById('net'),x=c.getContext('2d'),P=[],W,H;
+function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;P=[];var k=Math.min(70,Math.floor(W*H/16000));for(var i=0;i<k;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
+function dr(){x.clearRect(0,0,W,H);
+for(var i=0;i<P.length;i++){var a=P[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
+x.fillStyle='rgba(111,255,0,.7)';x.beginPath();x.arc(a.x,a.y,1.8,0,7);x.fill();
+for(var j=i+1;j<P.length;j++){var b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){x.strokeStyle='rgba(0,217,255,'+(.25*(1-d/130))+')';x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}}
+requestAnimationFrame(dr)}
+rs();addEventListener('resize',rs);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)dr();else{dr=null}
+})();
+</script>
+</body>
+</html>
