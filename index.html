@@ -82,6 +82,17 @@ ul.f li{margin:3px 0}
 .proj{border-top:3px solid var(--acc)}
 .proj:nth-child(2){border-top-color:var(--acc2)}
 .proj .note{font-size:.8rem;color:var(--acc2);font-family:var(--mono);margin-top:14px;padding-top:12px;border-top:1px dashed var(--bd)}
+/* game */
+.game-layout{display:grid;grid-template-columns:minmax(0,380px) minmax(220px,1fr);gap:36px;align-items:center}
+.game-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;aspect-ratio:1;width:100%;max-width:380px}
+.game-cell{display:grid;place-items:center;aspect-ratio:1;padding:0;background:rgba(2,4,13,.7);color:var(--tx);border:1px solid var(--bd);border-radius:8px;font:600 3rem var(--mono);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.game-cell:hover:enabled{background:rgba(0,217,255,.1);border-color:var(--acc2);transform:scale(1.02)}
+.game-cell:disabled{cursor:default}
+.game-cell[data-mark="X"]{color:var(--acc)}
+.game-cell[data-mark="O"]{color:var(--acc2)}
+.game-status{font-family:var(--mono);font-size:1.05rem;color:var(--acc);min-height:1.8em}
+.game-controls{margin-top:18px}
+@media(max-width:700px){.game-layout{grid-template-columns:1fr;gap:22px}.game-board{max-width:340px;margin:auto}}
 /* journey */
 .jr{display:flex;flex-direction:column;align-items:center;gap:0;max-width:340px;margin:0 auto}
 .jr div{width:100%;text-align:center;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--glass);font-weight:500}
@@ -105,7 +116,7 @@ footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:14
 <nav><div class="wrap"><a class="logo" href="#home">ASHA <span>B</span></a>
 <button class="burger" id="bg" aria-label="Toggle menu" aria-expanded="false">☰</button>
 <ul class="links" id="lk">
-<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#skills">Skills</a></li><li><a href="#tools">Tools</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li>
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#skills">Skills</a></li><li><a href="#tools">Tools</a></li><li><a href="#projects">Projects</a></li><li><a href="#game">Tic-Tac-Toe</a></li><li><a href="#contact">Contact</a></li>
 </ul></div></nav>
 
 <section id="home">
@@ -177,6 +188,28 @@ footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:14
 <div class="note">Project/learning concept — no real-time monitoring or detection is claimed.</div></div>
 </div></div></section>
 
+<section id="game"><div class="wrap">
+<h2 class="reveal">Tic-Tac-Toe</h2><p class="sub reveal">A quick game between X and O.</p>
+<div class="game-layout reveal">
+<div class="game-board" role="grid" aria-label="Tic-Tac-Toe board">
+<button class="game-cell" type="button" role="gridcell" data-index="0" aria-label="Row 1, column 1, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="1" aria-label="Row 1, column 2, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="2" aria-label="Row 1, column 3, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="3" aria-label="Row 2, column 1, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="4" aria-label="Row 2, column 2, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="5" aria-label="Row 2, column 3, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="6" aria-label="Row 3, column 1, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="7" aria-label="Row 3, column 2, empty"></button>
+<button class="game-cell" type="button" role="gridcell" data-index="8" aria-label="Row 3, column 3, empty"></button>
+</div>
+<div>
+<p class="game-status" id="game-status" role="status" aria-live="polite">Player X's turn</p>
+<p class="sub">Take turns choosing an empty square. First to make a line wins.</p>
+<button class="btn s game-controls" id="game-reset" type="button">New game</button>
+</div>
+</div>
+</div></section>
+
 <section id="journey"><div class="wrap">
 <h2 class="reveal">My Cyber Security Journey</h2><p class="sub reveal">Step by step, from Commerce to security.</p>
 <div class="jr reveal">
@@ -228,6 +261,16 @@ var s='Portfolio message from '+n.value,b=m.value+'\n\nFrom: '+n.value+' ('+e_.v
 location.href='mailto:ashabee257@gmail.com?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);
 document.getElementById('st').textContent='Opening your email app to send the message…'};
 var e_=document.getElementById('e'),n=document.getElementById('n'),m=document.getElementById('m');
+var gameBoard=Array(9).fill(' '),gamePlayer='X',gameOver=false;
+var gameCells=document.querySelectorAll('.game-cell'),gameStatus=document.getElementById('game-status');
+var winPositions=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function updateGame(){gameCells.forEach(function(cell,index){var mark=gameBoard[index];cell.textContent=mark===' '?'':mark;cell.dataset.mark=mark===' '?'':mark;cell.disabled=gameOver||mark!==' ';var row=Math.floor(index/3)+1,column=index%3+1;cell.setAttribute('aria-label','Row '+row+', column '+column+', '+(mark===' '?'empty':mark))})}
+function resetGame(){gameBoard=Array(9).fill(' ');gamePlayer='X';gameOver=false;gameStatus.textContent="Player X's turn";updateGame()}
+gameCells.forEach(function(cell){cell.addEventListener('click',function(){var index=Number(cell.dataset.index);if(gameOver||gameBoard[index]!==' ')return;gameBoard[index]=gamePlayer;
+var winner=winPositions.some(function(line){return gameBoard[line[0]]===gamePlayer&&gameBoard[line[1]]===gamePlayer&&gameBoard[line[2]]===gamePlayer});
+if(winner){gameOver=true;gameStatus.textContent='Player '+gamePlayer+' wins!'}else if(gameBoard.every(function(mark){return mark!==' '})){gameOver=true;gameStatus.textContent="It's a draw!"}else{gamePlayer=gamePlayer==='X'?'O':'X';gameStatus.textContent="Player "+gamePlayer+"'s turn"}updateGame()})});
+document.getElementById('game-reset').addEventListener('click',resetGame);
+updateGame();
 var c=document.getElementById('net'),x=c.getContext('2d'),P=[],W,H;
 function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;P=[];var k=Math.min(70,Math.floor(W*H/16000));for(var i=0;i<k;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
 function dr(){x.clearRect(0,0,W,H);
